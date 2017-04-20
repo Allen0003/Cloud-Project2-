@@ -1,9 +1,9 @@
 
-Everyone:<br>
-CouchDB 2.0 <br>
-Spark </br>
-Eclipse </br>
-How to get data from twitter api (dev.twitter.com) </br>
+Everyone:
+CouchDB 2.0
+Spark
+Eclipse
+How to get data from twitter api (dev.twitter.com)
   - Testing: http://130.56.250.145:5984/_utils </br>
   - see WhatsApp -> Don't delete "twitter_db" database ;-) </br>
 Create our virtual machine </br>
