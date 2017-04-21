@@ -2,6 +2,10 @@
 Everyone: </br>
 CouchDB 2.0 </br>
 Spark </br>
+https://www.dezyre.com/apache-spark-tutorial/spark-tutorial</br>
+http://kevintechnology.com/post/26375906420/the-easy-way-to-install-scala-on-mac-os-x</br>
+
+
 Eclipse </br>
 How to get data from twitter api (dev.twitter.com) </br>
 => Testing: http://130.56.250.145:5984/_utils </br>
