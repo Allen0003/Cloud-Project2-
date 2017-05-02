@@ -1,0 +1,11 @@
+Arterial Road Annual Average Daily Traffic Volumes 2011 for Victoria
+VIC_Govt_VicRoads
+Traffic volumes for freeways (excluding toll roads) and arterial roads in Victoria derived from surveys or estimates,
+covering the last four years, and ten years ago. The annual average daily traffic volume is provided, 
+including the number of commercial vehicles. The data covers the years 2011.
+
+
+Sample
+{"_id":"10001","geometry":{"coordinates":[],"type":""},"id":"122682","aadt_2011":"7,100** (220**)}   
+
+id range : (10001<)
