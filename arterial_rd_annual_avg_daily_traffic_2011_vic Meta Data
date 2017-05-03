@@ -8,4 +8,4 @@ including the number of commercial vehicles. The data covers the years 2011.
 Sample
 {"directio_1":"","geometry":{"coordinates":[],"type":"LineString"},"id":"","aadt_2011":""}
 
-id range : (10001<)
+id range : (10001-15018)
