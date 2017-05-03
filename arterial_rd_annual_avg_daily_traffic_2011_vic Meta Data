@@ -6,6 +6,6 @@ including the number of commercial vehicles. The data covers the years 2011.
 
 
 Sample
-{"_id":"10001","geometry":{"coordinates":[],"type":""},"id":"122682","aadt_2011":"7,100** (220**)}   
+{"directio_1":"","geometry":{"coordinates":[],"type":"LineString"},"id":"","aadt_2011":""}
 
 id range : (10001<)
