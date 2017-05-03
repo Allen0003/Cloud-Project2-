@@ -2,4 +2,7 @@ Black Spots 2007 - 2012 for Victoria
 VIC_Govt_VicRoads
 This dataset includes the locations where there have been high rates of crashes till December of 2012.
 
+id range: (10001-14579)
+
 Json sample:
+{"pointId":"","geometry":{"coordinates":[,],"type":"Point"},"accidents":""}
