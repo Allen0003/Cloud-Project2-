@@ -17,3 +17,6 @@ Install couchBD 2.0<br>
 => https://github.com/afiskon/install-couchdb </br>
 Restful web services <br>
 Tomcat Server 
+
+Twitter Sentiment Analyis by Machine Learning </br>
+=> https://github.com/ravikiranj/twitter-sentiment-analyzer
