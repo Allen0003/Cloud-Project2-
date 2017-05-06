@@ -18,7 +18,7 @@ public class ConnectorDb {
 			return tweet_test;
 	 }
 	 
-	 public static CouchDbConnector createCouchDbConnectorTest() throws MalformedURLException{
+	 public static CouchDbConnector createCouchDbConnectorTweet() throws MalformedURLException{
 			HttpClient authenticatedHttpClient = new StdHttpClient.Builder().url("http://130.56.253.207:5984").username("admin").password("cloudProject").socketTimeout(0).build();
 			CouchDbInstance dbInstance = new StdCouchDbInstance(authenticatedHttpClient);
 			// if the second parameter is true, the database will be created if it doesn't exists
@@ -26,5 +26,15 @@ public class ConnectorDb {
 			tweet_test = dbInstance.createConnector("tweet_db", true);
 			return tweet_test;
 	 }
+	 
+	 public static CouchDbConnector createCouchDbConnectorTraffic() throws MalformedURLException{
+			HttpClient authenticatedHttpClient = new StdHttpClient.Builder().url("http://130.56.253.207:5984").username("admin").password("cloudProject").socketTimeout(0).build();
+			CouchDbInstance dbInstance = new StdCouchDbInstance(authenticatedHttpClient);
+			// if the second parameter is true, the database will be created if it doesn't exists
+			CouchDbConnector tweet_test = null;
+			tweet_test = dbInstance.createConnector("black_spots_2007-2012_vic", true);
+			return tweet_test;
+	 }
+	 
 
 }
