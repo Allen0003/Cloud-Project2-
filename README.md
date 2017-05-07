@@ -1,3 +1,8 @@
+available time:
+
+Allen: 11:30 ~ 3:00 and after 5:20 Monday. 12:15 ~ 3:00 Thursday.
+
+
 
 Everyone: </br>
 CouchDB 2.0 </br>
