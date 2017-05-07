@@ -3,8 +3,8 @@ available time:
 Allen: 11:30 ~ 15:00 and after 17:20 Monday. 12:15 ~ 15:00 and after 17:20 Thursday. all day on Wednesday</br>
 Own: Tuesday 16:30-17:30, Wedn after 12:30, Thursday before-11:00, 13:00-15:15 </br>
 Jason: Tuesday 12:10 ~ 13:30, Wedneday 13:00 ~ 14:00, Thursday 13:00 ~ 14:00 (with lunch) </br>
-Adam: Monday before 12:00, Tuesday after 12:00, Wednesday all day
-Anita: Monday before 12:00, Tuesday after 12:00, Wednesday after 14:00 pm
+Adam: Monday before 12:00, Tuesday after 12:00, Wednesday all day</br>
+Anita: Monday before 12:00, Tuesday after 12:00, Wednesday after 14:00 pm</br>
 
 
 Everyone: </br>
