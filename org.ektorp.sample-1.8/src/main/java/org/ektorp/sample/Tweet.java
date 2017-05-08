@@ -26,7 +26,7 @@ public class Tweet {
 			//CouchDbConnector tweet_test = null;
 			//tweet_test = dbInstance.createConnector("tweet_test", true);
 			System.out.println("****Test Tweet****");
-			tweet_test=ConnectorDb.createCouchDbConnector();
+			tweet_test=ConnectorDb.createCouchDbConnectorTweet();
 			TweetRepository tweet_re_test= new TweetRepository(tweet_test);
 			int n=tweet_re_test.geMelCycle();
 			System.out.println(n);
@@ -40,14 +40,14 @@ public class Tweet {
 				JsonNode doc_s = tweet_test.get(JsonNode.class, doc_id);
 				System.out.println(doc_s.get("ccc_city").toString().replaceAll("\"", ""));
 			}*/
-			System.out.println("****Test Traffic****");
+			/*System.out.println("****Test Traffic****");
 			traffic_test=ConnectorDb.createCouchDbConnectorTraffic();
 			TrafficRepository traffic_re_test= new TrafficRepository(traffic_test);
 			List<JsonNode> doc_mel_traffic = new ArrayList<JsonNode>();
 			doc_mel_traffic=traffic_re_test.getMelTraffic();
 			for (JsonNode doc_s : doc_mel_traffic) {
 				System.out.println(doc_s.get("accidents"));
-			}
+			}*/
 			
 			System.out.println("****Success****");
 	}
