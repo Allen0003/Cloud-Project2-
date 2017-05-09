@@ -16,9 +16,13 @@ public class TweetRepository extends CouchDbRepositorySupport<JsonNode>{
 	}
 	
 
-	@View(name = "mel_cycle",map="function (doc) {\r\n   var str = doc.text.toLowerCase();\r\n   var cycles = [\"cyclist\",\"cycling\",\"cycle\",\"helmet\",\"bike\",\"riding\",\"ride\",\"rider\",\"bicycle\",\"pedaling\",\"pedal\",\"road ride\",\"mtb\",\"push bike\"];\r\n   var i,x;\r\n\r\n   for(i=0;i<cycles.length;i++){\r\n     x=str.indexOf(cycles[i]);\r\n     if(x!=-1 && doc.ccc_city==\"Melbourne\"){\r\n       emit(doc.ccc_city,null);\r\n     }\r\n   }\r\n}",reduce="_count")
+		@View(name = "mel_cycle",map="function (doc) {\r\n   var str = doc.text.toLowerCase();\r\n   var cycles = [\"cyclist\",\"cycling\",\"cycle\",\"helmet\",\"bike\",\"riding\",\"ride\",\"rider\",\"bicycle\",\"pedaling\",\"pedal\",\"road ride\",\"mtb\",\"push bike\"];\r\n   var i,x;\r\n\r\n   for(i=0;i<cycles.length;i++){\r\n     x=str.indexOf(cycles[i]);\r\n     if(x!=-1 && doc.ccc_city==\"Melbourne\"){\r\n       emit(doc.ccc_city,null);\r\n     }\r\n   }\r\n}",reduce="_count")
     public int geMelCycle() {
-        ViewResult r = db.queryView(createQuery("mel_cycle"));
+		ViewQuery query = new ViewQuery()
+        .designDocId("_design/JsonNode")
+        .viewName("mel_cycle");
+        ViewResult r = db.queryView(query);
+        
         List<Row> rows = r.getRows();
         if(rows.isEmpty()){
         	return 0;
@@ -28,8 +32,42 @@ public class TweetRepository extends CouchDbRepositorySupport<JsonNode>{
 	
 	@View(name="mel_cycle_1")
 	public List<JsonNode> getMelCycle1() {
-        return db.queryView(createQuery("mel_cycle_1").includeDocs(true),
-        		JsonNode.class);
+		ViewQuery query = new ViewQuery()
+        .designDocId("_design/JsonNode")
+        .viewName("mel_cycle_1")
+        .includeDocs(true);
+        List<JsonNode> r = db.queryView(query,JsonNode.class);
+        return r;
     }
+	
+	
+	@View(name="mel_cycle_city")
+	public List<JsonNode> getMelCycleCity() {
+		ViewQuery query = new ViewQuery()
+        .designDocId("_design/Cycle")
+        .viewName("mel_cycle_city")
+        .includeDocs(true);
+        List<JsonNode> r = db.queryView(query,JsonNode.class);
+        return r;
+    }
+	
+	@View(name="mel_weekday")
+	public List<JsonNode> getMelWeekday() {
+		ViewQuery query = new ViewQuery()
+        .designDocId("_design/JsonNode")
+        .viewName("mel_weekday")
+        .includeDocs(true).limit(500);
+        return db.queryView(query,JsonNode.class);
+    }
+	
+	@View(name="mel_weekend")
+	public List<JsonNode> getMelWeekend() {
+		ViewQuery query = new ViewQuery()
+        .designDocId("_design/JsonNode")
+        .viewName("mel_weekend")
+        .includeDocs(true).limit(500);
+        return db.queryView(query,JsonNode.class);
+    }
+	
 
 }
