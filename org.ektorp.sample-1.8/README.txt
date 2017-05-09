@@ -8,9 +8,7 @@ The interface to connect to database
 3.TweetRepository.java(tweet_db database related API)
 The interface to get all tweets that are posted in Melbourne and includes keywords about cycle
 
-geMelCycle()
 getMelCycle1()
-getMelCycleCity()
 getMelWeekday()
 getMelWeekend()
 
