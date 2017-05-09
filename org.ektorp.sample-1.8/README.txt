@@ -1,10 +1,20 @@
 
 1.Tweet.java 
 Main function, you can learn about how to call the function in this file
+
 2.ConnectorDb.java
 The interface to connect to database
+
 3.TweetRepository.java(tweet_db database related API)
 The interface to get all tweets that are posted in Melbourne and includes keywords about cycle
+
+geMelCycle()
+getMelCycle1()
+getMelCycleCity()
+getMelWeekday()
+getMelWeekend()
+
+
 4.TrafficRepository.java(black_spots_2007-2012_vic related API)
 The interface to get all traffic accidents in Melbourne
 The attribute "accidents" is useful. You can use this attribute to show the frequency of car crash on the map. 
