@@ -35,18 +35,7 @@ public class TweetRepository extends CouchDbRepositorySupport<JsonNode>{
 		ViewQuery query = new ViewQuery()
         .designDocId("_design/JsonNode")
         .viewName("mel_cycle_1")
-        .includeDocs(true);
-        List<JsonNode> r = db.queryView(query,JsonNode.class);
-        return r;
-    }
-	
-	
-	@View(name="mel_cycle_city")
-	public List<JsonNode> getMelCycleCity() {
-		ViewQuery query = new ViewQuery()
-        .designDocId("_design/Cycle")
-        .viewName("mel_cycle_city")
-        .includeDocs(true);
+        .includeDocs(true).limit(500);
         List<JsonNode> r = db.queryView(query,JsonNode.class);
         return r;
     }
