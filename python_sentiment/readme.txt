@@ -1,4 +1,4 @@
-# all test were conducted in a "NeCTAR Ubuntu 16.04 LTS (Xenial) amd64".
+# all tests were conducted in a "NeCTAR Ubuntu 16.04 LTS (Xenial) amd64".
 
 -------------------------------------------------------------------------------
 
