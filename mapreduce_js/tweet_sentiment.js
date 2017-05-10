@@ -1,7 +1,7 @@
 /* 
  * This file defines the mapreduce function to get all tweets created on weekday 
  * or weekend in Melbourne
- * Use database black_spots_2007-2012_vic
+ * Use database tweet_db
  *
  * Authers: Team 10
  *      Ziren Wang, zirenw@student.unimelb.edu.au, 720128
