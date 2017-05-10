@@ -1,6 +1,19 @@
-package twittersentiment;
 
-// https://github.com/mikelewis0/easyccg/blob/master/src/uk/ac/ed/easyccg/lemmatizer/Lemmatizer.java
+/*
+ * https://github.com/mikelewis0/easyccg/blob/master/src/uk/ac/ed/easyccg/lemmatizer/Lemmatizer.java
+ *
+ * This file defines lemmatization process.
+ *      
+ *
+ * Authers: Team 10
+ *      Ziren Wang, zirenw@student.unimelb.edu.au, 720128
+ *      Xiang Xiang, xxiang2@student.unimelb.edu.au, 720138
+ *      Yongchul Kim, yongchulk@student.unimelb.edu.au, 750659
+ *      Own Daghagheleh, odaghagheleh@student.unimelb.edu.au, 816273
+ *      Wen Pin Wu, w.wu47@student.unimelb.edu.au, 871702
+ */
+
+package twittersentiment;
 
 import java.io.BufferedReader;
 import java.io.IOException;

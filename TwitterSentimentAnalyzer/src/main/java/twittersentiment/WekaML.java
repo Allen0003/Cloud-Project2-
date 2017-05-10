@@ -1,3 +1,20 @@
+/*
+ * This file defines prediction process by using Weka.
+ *      
+ * It first reads vocabulary file used when we built a model.
+ * Then it creates a sparse instance from the tweet text after normalizaition
+ * and removing stop words and so on.
+ * Finally, it predicts sentiment of the given tweet and return for the future use.
+ * 
+ *
+ * Authers: Team 10
+ *      Ziren Wang, zirenw@student.unimelb.edu.au, 720128
+ *      Xiang Xiang, xxiang2@student.unimelb.edu.au, 720138
+ *      Yongchul Kim, yongchulk@student.unimelb.edu.au, 750659
+ *      Own Daghagheleh, odaghagheleh@student.unimelb.edu.au, 816273
+ *      Wen Pin Wu, w.wu47@student.unimelb.edu.au, 871702
+ */
+
 package twittersentiment;
 
 import java.io.BufferedReader;
@@ -77,11 +94,7 @@ public class WekaML {
             }
 
             // load model
-            // cls = new SerializedClassifier();
             cls = (Classifier) weka.core.SerializationHelper.read(MODEL_FILE);
-            // cls.setModelFile(new File(getClass().getClassLoader().getResource(MODEL_FILE).getFile()));
-            // cls.setModelFile(new File(getClass().getResource(MODEL_FILE).getFile()));
-            // cls.setModelFile(new File(MODEL_FILE));
 
             // for numeric attributes
             Attribute[] attr = new Attribute[attributes.size()];
@@ -90,7 +103,6 @@ public class WekaML {
                 Integer value = entry.getValue();
 
                 attr[value] = new Attribute(key);
-                // System.out.println("key = " + key + " value = " + value);
             }
 
             // for class attribute
@@ -112,8 +124,6 @@ public class WekaML {
     }
 
     public String predict(String text, boolean print) {
-        // System.out.println("size of feature vector = " + featureVector.size());
-
         // arff
         Instances arff = new Instances("twitter_sentiment_analysis", featureVector, 1);
         arff.setClassIndex(arff.numAttributes() - 1);
@@ -132,19 +142,16 @@ public class WekaML {
             String word = entry.getKey();
             Integer count = entry.getValue();
             if (attributes.containsKey(word)) {
-                // System.out.println("word = " + word + " value = " + count);
                 sparseInstance.setValue(attributes.get(word), count);
             }
         }
 
         if (sparseInstance.numAttributes() == 0) {
-            // System.out.printf("No attributes..!");
             return "2";
         }
 
         // do prediction
         arff.add(sparseInstance);
-        // System.out.printf(arff.toString());
 
         double pred = 0;
         try {
