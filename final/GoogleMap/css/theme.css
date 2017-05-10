@@ -1,0 +1,59 @@
+.custom-marker {}
+
+.mr20 {
+    margin-left: 20px;
+}
+
+.mr120 {
+    margin-right: 120px;
+}
+
+.map {
+    height: 600px;
+    width: 90%;
+}
+
+.position70 {
+    border-left-width: 70px;
+    left: 70px;
+}
+
+.w600{
+  width: 600px;
+}
+
+.center {
+    margin: auto;
+}
+
+.custom-marker.bad {
+    background: url("https://maps.google.com/mapfiles/ms/icons/red-dot.png");
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    z-index: 1;
+    padding: 10px;
+}
+
+.custom-marker.soso {
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+    z-index: 1;
+    background: url("https://maps.google.com/mapfiles/ms/icons/yellow-dot.png");
+    background-repeat: no-repeat;
+}
+
+.custom-marker.happy {
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+    z-index: 1;
+    background: url("https://maps.google.com/mapfiles/ms/icons/green-dot.png");
+    background-repeat: no-repeat;
+}
+
+
+.whiteWord{
+  color: white;
+}
