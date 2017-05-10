@@ -1,4 +1,14 @@
 #
+# download training data and unzip
+#
+
+wget http://cs.stanford.edu/people/alecmgo/trainingandtestdata.zip
+
+unzip trainingandtestdata.zip
+
+--------------------------------------------------------------------------------
+
+#
 # normalize twitter training dataset and generate vocabulary
 #
 
@@ -17,7 +27,7 @@ python gen_arff.py voca training.1600000.processed.noemoticon.txt 1000.arff voca
 
 # feature selection by WEKA
 
-screen -S do1000 java -cp ~/ccc/weka-3-8-1/weka.jar weka.attributeSelection.InfoGainAttributeEval -s "weka.attributeSelection.Ranker -T -1.7976931348623157E308 -N -1" -i 1000.arff > fs_1000.txt
+java -cp ~/ccc/weka-3-8-1/weka.jar weka.attributeSelection.InfoGainAttributeEval -s "weka.attributeSelection.Ranker -T -1.7976931348623157E308 -N -1" -i 1000.arff > fs_1000.txt
 
 
 --------------------------------------------------------------------------------
@@ -34,7 +44,7 @@ python gen_arff.py target training.1600000.processed.noemoticon.txt t1000.arff t
 
 java -cp ~/ccc/weka-3-8-1/weka.jar weka.classifiers.bayes.NaiveBayesMultinomial -d nbm_t1000.model -t t1000.arff
 
-# generate arff for training data : top 500 token
+# generate arff for training data : top 500 token (WE USED THIS MODEL)
 
 python gen_arff.py target training.1600000.processed.noemoticon.txt t500.arff target_1000.txt 0.00007411
 
@@ -45,7 +55,7 @@ java -cp ~/ccc/weka-3-8-1/weka.jar weka.classifiers.bayes.NaiveBayesMultinomial 
 -------------------------------------------------------------------------------
 
 #
-# test new instances
+# classify new instances
 #
 
 java -cp ~/ccc/weka-3-8-1/weka.jar weka.classifiers.bayes.NaiveBayesMultinomial -l nbm_t500.model -T test_t500.arff -p 0
@@ -87,10 +97,3 @@ unzip weka-3-8-1.zip
 UPLOAD wekafiles.tgz
 cd <- move to home directory
 tar cvzf wekafiles.tgz
-
-#
-# install training data
-#
-
-wget http://cs.stanford.edu/people/alecmgo/trainingandtestdata.zip
-unzip trainingandtestdata.zip
