@@ -94,6 +94,10 @@ sudo apt-get install default-jdk
 wget http://prdownloads.sourceforge.net/weka/weka-3-8-1.zip
 unzip weka-3-8-1.zip
 
+# wekafiles in home directory
+# when we run weka in GUI mode (java -jar weka.jar) for the first time, it downloads default packages.
+# below processes are needed when we did not run weka.jar as GUI mode.
+
 UPLOAD wekafiles.tgz
 cd <- move to home directory
 tar cvzf wekafiles.tgz
