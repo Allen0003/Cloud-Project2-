@@ -9,7 +9,7 @@ How to get data from twitter api (dev.twitter.com) </br>
 => see WhatsApp -> Don't delete "twitter_db" database ;-) </br>
 => We need dev accounts as many as possible ! </br>
 Create our virtual machine </br>
-Install couchBD 2.0<br>
+Install couchDB 2.0<br>
 => http://linoxide.com/linux-how-to/install-couchdb-futon-ubuntu-1604/ </br>
 => https://github.com/afiskon/install-couchdb </br>
 Restful web services <br>
