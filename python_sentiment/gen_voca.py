@@ -1,3 +1,16 @@
+#
+# This file defines functions for normalizing and generating vocabulary in
+# a training dataset.
+#
+#
+# Authers: Team 10
+#      Ziren Wang, zirenw@student.unimelb.edu.au, 720128
+#      Xiang Xiang, xxiang2@student.unimelb.edu.au, 720138
+#      Yongchul Kim, yongchulk@student.unimelb.edu.au, 750659
+#      Own Daghagheleh, odaghagheleh@student.unimelb.edu.au, 816273
+#      Wen Pin Wu, w.wu47@student.unimelb.edu.au, 871702
+#
+
 import csv, re, sys
 from nltk.stem.wordnet import WordNetLemmatizer
 
@@ -105,10 +118,10 @@ def main(csv_filename, voca_filename, stopwords_filename):
 
 #-------------------------------------------------------------------------------
 
-#csv_filename = 'training.1600000.processed.noemoticon.csv'
-#voca_filename = 'vocabulary.txt'
-#stopwords_filename = 'stopwords.txt'
-
 if __name__ == "__main__":
-   main(sys.argv[1], sys.argv[2], sys.argv[3])
-   #print process_tweet(sys.argv[1])
+    csv_filename = sys.argv[1]
+    voca_filename = sys.argv[2]
+    stopwords_filename = sys.argv[3]
+
+    main(csv_filename, voca_filename, stopwords_filename)
+    #print process_tweet(csv_filename)

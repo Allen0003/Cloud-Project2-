@@ -1,3 +1,15 @@
+#
+# This file defines functions for generating ARFF file for WEKA.
+#
+#
+# Authers: Team 10
+#      Ziren Wang, zirenw@student.unimelb.edu.au, 720128
+#      Xiang Xiang, xxiang2@student.unimelb.edu.au, 720138
+#      Yongchul Kim, yongchulk@student.unimelb.edu.au, 750659
+#      Own Daghagheleh, odaghagheleh@student.unimelb.edu.au, 816273
+#      Wen Pin Wu, w.wu47@student.unimelb.edu.au, 871702
+#
+
 import sys, re
 import bisect
 from nltk.stem.wordnet import WordNetLemmatizer
