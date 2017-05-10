@@ -144,7 +144,13 @@ java -cp $WEKAHOME/weka.jar weka.classifiers.trees.J48 -d j48_t500.model -t t500
 # use t500.arff, remove all instances then add some samples
 #
 # @DATA
-# {0 1, 2 1, 39 1, 67 1, 109 1, 185 1, 248 1, 424 1, 493 1, 500 ?}
-# {46 1, 69 1, 309 1, 411 1, 455 1, 492 2, 500 ?}
+# {0 1, 500 ?}
+# {1 1, 500 ?}
 
 java -cp $WEKAHOME/weka.jar weka.classifiers.bayes.NaiveBayesMultinomial -l nbm_t500.model -T test_t500.arff -p 0
+
+=== Predictions on test data ===
+
+    inst#     actual  predicted error prediction
+        1        1:?        3:4       0.594
+        2        1:?        1:0       0.769
