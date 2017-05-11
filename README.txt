@@ -9,7 +9,7 @@ TwitterSentimentAnalyzer:
 TwitterMapreduce:
     It contains source code of mapreduce function written in JavaScript and the interface of using mapreduce function in couchdb
    
-visualization:   
+visualisation:   
     It contains source code of fornt-end html code and back-end web service code. Fornt-end code can use browser to compile directly, while back-end code must use java compile and server framework such as Tomcat.
 
 AurinDataProcessing:
