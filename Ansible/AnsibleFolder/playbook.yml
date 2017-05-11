@@ -1,0 +1,98 @@
+---
+- hosts: localhost
+  connection: local
+  become_method: sudo
+  tasks:
+  - name: Install Python Boto
+    yum: name=python-boto state=installed
+  - name: Change EC2 External Inventory Scrip Permissions
+    file: path=/etc/ansible/hosts/ec2.py mode=0777
+  - name:  Export AWS_ACCESS_KEY_ID into environment variables
+    command: export AWS_ACCESS_KEY_ID='change-me'
+  - name:  Export AWS_SECRET_ACCESS_KEY into environment variables
+    command: export AWS_SECRET_ACCESS_KEY='change me'
+  - name: Create Key-Pair
+    ec2_key: name=cloud-project
+  - name: Create Security Group "Cloud-Project2-SecurityGroup" 
+    ec2_group: name=Cloud-Project2-SecurityGroup
+        rules: 
+        - proto: tcp from_port=22 to_port=22 cidr_ip=0.0.0.0/0
+        - proto: tcp from_port=80 to_port=80 cidr_ip=0.0.0.0/0
+        - proto: tcp from_port=8080 to_port=8080 cidr_ip=0.0.0.0/0
+        - proto: tcp from_port=443 to_port=443 cidr_ip=0.0.0.0/0
+        - proto: tcp from_port=8443 to_port=8443 cidr_ip=0.0.0.0/0
+        - proto: tcp from_port=4369 to_port=4369 cidr_ip=0.0.0.0/0
+        - proto: tcp from_port=5984 to_port=5984 cidr_ip=0.0.0.0/0
+        - proto: tcp from_port=5986 to_port=5986 cidr_ip=0.0.0.0/0
+        - proto: tcp from_port=9100 to_port=9200 cidr_ip=0.0.0.0/0
+  - name: Create 4 Instances
+    ec2: key_name=cloud-project instance_type=m1.medium image=f603db16-7adf-48a6-964f-1905f86fa31e wait=yes group=Cloud-Project2-SecurityGroup count=4
+      - ec2_vol: instance="{{ item.id }}" volume_size=60 with_items: "{{ ec2.instances }}"
+    
+- hosts: security_group_cloud_project
+  become_method: sudo
+  tasks:
+  - name: Install Dependancies 1
+    yum: name=epel-release state=installed
+  - name: Install Dependancies 2
+    yum: name=wget state=installed
+  - name: Install Dependancies 3
+    yum: name={{ item }} state=installed
+    with_items:
+       - autoconf
+       - autoconf-archive
+       - automake 
+       - curl-devel
+       - erlang-asn1
+       - erlang-erts
+       - erlang-eunit
+       - erlang-os_mon
+       - erlang-xmerl
+       - help2man
+       - js-devel-1.8.5
+       - libicu-devel
+       - libtool
+       - perl-Test-Harness
+       - gcc-c++
+       - erlang-reltool
+       - erlang-erl_interface
+       - erlang-jiffy
+       - erlang-snappy 
+  - name: Make Template Directory
+    file: path=/home/temp state=directory mode=0777
+  - name: Create couchdb user
+    user: name=couchdb createhome=no shell=/bin/bash system=yes state=present
+  - name: Download Couchdb
+    get_url: url=http://www-us.apache.org/dist/couchdb/source/2.0.0/apache-couchdb-2.0.0.tar.gz dest=/home/temp/ mode=0777
+  - name: Unarchiving CouchDB
+    unarchive: remote_src=yes src=/home/temp/apache-couchdb-2.0.0.tar.gz dest=/home/temp/
+  - name: Cd to Couchdb Source Folder and Configore
+    command: chdir=/home/temp/apache-couchdb-2.0.0/ ./configure
+  - name: Cd To CouchDB Source and make release
+    command: chdir=/home/temp/apache-couchdb-2.0.0/ make release
+  - name: Copy couch to home Directory
+    command: cp -R /home/temp/apache-couchdb-2.0.0/rel/couchdb /home/
+  - name: Change couchdb folder owner
+    file: path=/home/couchdb/ state=directory owner=couchdb group=couchdb
+  - name: Change couchdb folder mode
+    file: path=/home/couchdb/etc/ mode=777
+  - name: Apply find
+    command: find /home/couchdb -type d -exec chmod 0777 {} \;
+  - name: Mount an External volume
+    command: mount /dev/vdc /mnt –t auto
+  - name: Make data directory
+    file: path=/mnt/data state=directory mode=0777
+  - name: Change data folder owner
+    file: path=/mnt/data/ state=directory owner=couchdb group=couchdb
+  - name: Apply find on data
+    command: find /mnt/data/ -type d -exec chmod 0777 {} \;
+  - name: Change Couchdb default data path in INI
+    ini_file: path=/home/couchdb/etc/local.ini section=couchdb option=database_dir value=/mnt/data
+  - name: Change Couchdb default index path
+    ini_file: path=/home/couchdb/etc/local.ini section=couchdb option=view_index_dir value=/mnt/data
+  - name: Couchdb Startup script
+    script: /home/startupCouch
+  - name: reload daemon
+    command: systemctl daemon-reload
+  - name: start couchdb
+    service: name=couchdb.service state=started enabled=yes

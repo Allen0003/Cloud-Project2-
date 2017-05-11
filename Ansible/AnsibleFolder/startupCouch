@@ -1,0 +1,12 @@
+cat <<EOT > /etc/systemd/system/couchdb.service
+[Unit]
+Description=CouchDB 2.0 service
+After=network.target
+ 
+[Service]
+Type=simple
+User=couchdb
+ExecStart=/home/couchdb/bin/couchdb -o /dev/stdout -e /dev/stderr
+Restart=on-failure
+ExecStop=/bin/kill -TERM \$MAINPID
+EOT

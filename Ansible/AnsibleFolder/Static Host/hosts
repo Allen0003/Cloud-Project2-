@@ -1,0 +1,9 @@
+---
+[localhost]
+master ansible_host=127.0.0.1 ansible_user=<root username> ansible_ssh_pass=<root password>
+
+[security_group_cloud_project]
+serverA ansible_host=<changeme> ansible_user=<root username> ansible_ssh_pass=<root password>
+serverB ansible_host=<changeme> ansible_user=<root username> ansible_ssh_pass=<root password>
+serverC ansible_host=<changeme> ansible_user=<root username> ansible_ssh_pass=<root password>
+serverD ansible_host=<changeme> ansible_user=<root username> ansible_ssh_pass=<root password>
